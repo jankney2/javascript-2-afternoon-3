@@ -29,6 +29,10 @@
 
 // Code Here 
 
+function first(arr, callback) {
+  callback(arr[0]);
+}
+
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 
@@ -48,6 +52,9 @@ first(names, function(firstName){
 */
 
 //Code Here
+function last(arr, callback) {
+  callback(arr[arr.length-1]);
+}
 
 // Do not edit the code below.
 last(names, function(lastName){
@@ -67,6 +74,11 @@ last(names, function(lastName){
 
 //Code Here
 
+function multiply(num1, num2, callback) {
+ let product= num1*num2;
+  callback(product);
+}
+
 // Do not edit the code below.
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
@@ -85,6 +97,16 @@ multiply(4, 3, function(answer){
 */
 
 //Code Here 
+
+function contains(arr, name, callback) {
+  for (let i=0; i<arr.length; i++) {
+    if(arr[i]===name) {
+      callback(true);
+    } else {
+      callback(false);
+    }
+  }
+}
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -107,6 +129,20 @@ contains(names, 'Colt', function(result){
 
 //Code Here
 
+
+function uniq(arr, cb) {
+  for (let i=arr.length-1; i>=0; i--){
+    for(let j=arr.length-1; j>=0; j--){
+      if(arr[i]===arr[j] && i !== j){
+        arr.splice(j, 1)
+    }
+  }
+  
+}
+cb(arr)
+};
+
+
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -123,11 +159,17 @@ uniq(names, function(uniqArr){
 */
 
 //Code Here 
+function each(arr, cb) {
 
+  for(let i=0; i<arr.length; i++) {
+    cb(arr[i], i)
+  }
+}
 // Do not edit the code below.
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
 });
+
 // Do not edit the code above.
 
 
@@ -140,6 +182,14 @@ each(names, function(item, indice){
 */
 
 // Code here
+
+function getUserById(arr, id, cb) {
+  for(let i=0; i<arr.length; i++){
+    if(id===arr[i].id){
+      cb(arr[i])
+    }
+  }  
+}
 
 // Do not edit the code below.
 var users = [
@@ -166,4 +216,5 @@ var users = [
 getUserById(users, '16t', function(user){
   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
 });
+
 // Do not edit the code above.
